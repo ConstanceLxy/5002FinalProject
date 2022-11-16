@@ -19,7 +19,7 @@ class Student (object):
             elif score >= 80 : self.list_grades.append('B')
             elif score >= 70 : self.list_grades.append('C')
             elif score >= 60 : self.list_grades.append('D')
-            else : self.list_grades.append('O')
+            else : self.list_grades.append('F')
 #variance
     def Variance(self):
         sum_squre = 0
