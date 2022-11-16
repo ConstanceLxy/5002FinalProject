@@ -1,6 +1,7 @@
 import math
 
-#Just try to commit
+
+# Just try to commit
 class Student(object):
 
     def __init__(self, name='', id=0, subject_1=0.0, subject_2=0.0, subject_3=0.0):
