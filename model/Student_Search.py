@@ -1,5 +1,18 @@
 from Student_record import record
 import matplotlib.pyplot as plt
+
+
+"""
+                 Function Description
+show_scores(students)       -show specific student's score
+show_average(students,num)  -show average scores from the whole class
+show_rank(students)         -print specific student rank
+show_variance(students)     -print specific student rank
+show_highest(students)      -print the highest score for three subjects
+grades_divided(students)    -return students' grades in default order
+show_grade(students)        -show the number of people in each grade for the three subjects
+"""
+
 def show_scores(students):
     name = input('please input name or id:')
     flag = 0
@@ -35,7 +48,7 @@ def show_average(students,num):
     ave.append(average(list_English,num))
     print(f"Chinese：{ave[0]:.2f},Math：{ave[1]:.2f},English：{ave[2]:.2f}")
 
-def show_rank(students)：
+def show_rank(students):
     list_Chinese = []
     list_Math = []
     list_English = []
@@ -78,7 +91,6 @@ def show_variance(students):
     dict_1 = sorted(dict_0.items(),key = lambda x:x[1],reverse = True)
     for i in dict_1:
         print(i)
-
 def show_highest(students):
     list_Chinese = []
     list_Math = []
@@ -104,7 +116,6 @@ def show_highest(students):
             print(f"{student.name}get highest{list_English[0]:.2f}分 in English")
     print('-------------------------------------------------------------')
 
-
 def grades_divided(students):
     Chinese = []
     Math = []
@@ -116,7 +127,6 @@ def grades_divided(students):
         Math.append(student.list_grades[1])
         English.append(student.list_grades[2])
     return list_all
-
 
 def show_grade(students):
     List_Chinese = [0,0,0,0,0]
