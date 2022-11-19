@@ -4,13 +4,15 @@ import matplotlib.pyplot as plt
 
 """
                  Function Description
-show_scores(students)       -show specific student's score
-show_average(students,num)  -show average scores from the whole class
+show_scores(students)       -print specific student's score
+show_average(students,num)  -print average scores from the whole class
 show_rank(students)         -print specific student rank
 show_variance(students)     -print specific student rank
 show_highest(students)      -print the highest score for three subjects
-grades_divided(students)    -return students' grades in default order
-show_grade(students)        -show the number of people in each grade for the three subjects
+
+grades_divided(students)    -return students' grades in default order        [to continue]
+show_grade(students)        -print the number of people in each grade for the three subjects
+
 """
 
 def show_scores(students):

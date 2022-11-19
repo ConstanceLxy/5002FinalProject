@@ -1,13 +1,18 @@
 import pandas as pd
 from model.Student_class import Student
+
+
 def load():
-    data = pd.read_excel(r'Student_Scores.xlsx','Sheet1',usecols = "A:E",converters = {'Name':str,'ID':int,'Chinese':float,'Math':float,'English':float})
-    #array to data array
+    data = pd.read_excel(r"Student_Scores.xlsx", skiprows=[0], usecols=5, converters={'Name': str, 'ID': int, 'Chinese': float, 'Math': float, 'English': float})
+    # array to data array
     data_array = data.values
-    #array to list
+    # array to list
     students = []
     for data_list in data_array:
         student = Student(data_list[0],data_list[1],data_list[2],data_list[3],data_list[4])
-    #list to student
+    # list to student
         students.append(student)
     return students
+
+
+load()
