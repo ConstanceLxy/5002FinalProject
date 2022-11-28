@@ -3,7 +3,7 @@ from model.Student_class import Student
 
 
 def load():
-    data = pd.read_excel(r"Student_Scores.xlsx", skiprows=[0], usecols=5, converters={'Name': str, 'ID': int, 'Chinese': float, 'Math': float, 'English': float})
+    data = pd.read_excel(r"D:\CodeHouse\PycharmProjects\5002FinalProject\model\Student_Scores.xlsx", skiprows=[0], converters={'Name': str, 'ID': int, 'Chinese': float, 'Math': float, 'English': float})
     # array to data array
     data_array = data.values
     # array to list
@@ -13,6 +13,3 @@ def load():
     # list to student
         students.append(student)
     return students
-
-
-load()
