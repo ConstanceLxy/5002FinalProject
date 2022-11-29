@@ -7,6 +7,7 @@ class Student(object):
         self.id = id
         self.list_scores = [round(subject_1, 1), round(subject_2, 1), round(subject_3, 1)]
         self.list_grades = []
+        self.variance = self.Variance()
 
     # sum
     def sum(self):
