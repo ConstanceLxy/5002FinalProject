@@ -1,6 +1,18 @@
 from Student_load import load
 from Student_class import Student
-from Student_record import record
+# from Student_record import record
+from model.Student_Search import *
+
+"""
+                   File Function Description
+scores_divided[used in sort]        -return a list with all the students scores and sum
+sort                  -sort by subject
+
+change score          -change a specific student's specific score
+insert                -insert a student's information
+part_operate          -use in a terminal
+"""
+
 
 
 def scores_divided(students):
@@ -132,16 +144,30 @@ def insert(students):
     new_student = Student(name, id, Chinese, Math, English)
     students.append(new_student)
 
+def printStudentInfo(students):
+    for student in students:
+        print(f"Student Name: {student.name}")
+        print(f"Student ID:   {student.id}")
+        print(f"Chinese: {student.list_scores[0]},   Math: {student.list_scores[1]},   English: {student.list_scores[2]}")
+        print(f"Grades:  {student.list_grades[0]}             {student.list_grades[1]}                {student.list_grades[2]}")
+        print("---------------------------------------------")
+
+
+
+
+
 
 def part_operate(students):
     while True:
         print("""
                        
-                 sort.........................1
-                 change.......................2
-                 Initialize...................3
-                 insert.......................4
-                 return.......................5
+                 Initialize...................1
+                 Change.......................2
+                 Sort.........................3
+                 Insert.......................4
+                 Print Information............5
+                 Exit.........................6
+
          """)
         choose = 0
         try:
@@ -150,21 +176,24 @@ def part_operate(students):
             print('')
         if choose == 1:
             record('operate', choose)
-            sort(students)
-            print('sorted successfully')
+            students = load()
+            print('initialize successfully！')
         elif choose == 2:
             record('operate', choose)
             change_score(students)
             print('update successfully！')
         elif choose == 3:
             record('operate', choose)
-            students = load()
-            print('initialize successfully！')
+            sort(students)
+            print('sorted successfully')
+
         elif choose == 4:
             record('operate', choose)
             insert(students)
             print('add successfully')
         elif choose == 5:
+            printStudentInfo(students)
+        elif choose == 6:
             record('operate', choose)
             return
         else:

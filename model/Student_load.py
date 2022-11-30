@@ -11,5 +11,6 @@ def load():
     for data_list in data_array:
         student = Student(data_list[0],data_list[1],data_list[2],data_list[3],data_list[4])
     # list to student
+        student.grade()
         students.append(student)
     return students

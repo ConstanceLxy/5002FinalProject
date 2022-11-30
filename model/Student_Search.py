@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 show_scores(students)       -print specific student's score
 show_average(students,num)  -print average scores from the whole class
 show_rank(students)         -print specific student rank
-show_variance(students)     -print specific student rank
+show_variance(students)     -print students scores variance from low to high
 show_highest(students)      -print the highest score for three subjects
 
 grades_divided(students)    -return students' grades in default order        [to continue]
@@ -20,7 +20,7 @@ def show_scores(students):
     flag = 0
     for student in students:
         if student.name ==name or str(student.id) == name:
-            print(f"Chinese :{student.list_scored[0]:.2f},math:{student.list_scores[1]:.2f},English:{student.list_scores[2]:.2f},Total:{student.sum():.2f}")
+            print(f"Chinese :{student.list_scores[0]:.2f},math:{student.list_scores[1]:.2f},English:{student.list_scores[2]:.2f},Total:{student.sum():.2f}")
             flag = 1
             break
     if flag == 0:
