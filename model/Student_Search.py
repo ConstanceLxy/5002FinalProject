@@ -171,3 +171,49 @@ def show_median(students):
     print(Scores_Math[int((len(Scores_Math)-1)/2)])
     print(Scores_English[int((len(Scores_English)-1)/2)])
 
+def show_scores_district(students):
+    Chinese_90Above = 0
+    Chinese_80Above = 0
+    Chinese_80Below = 0
+
+    Math_90Above = 0
+    Math_80Above = 0
+    Math_80Below = 0
+
+    English_90Above = 0
+    English_80Above = 0
+    English_80Below = 0
+
+    for student in students:
+        if(student.list_scores[0] > 90):
+            Chinese_90Above += 1
+        elif(student.list_scores[0] > 80):
+            Chinese_80Above += 1
+        elif(student.list_scores[0] < 80):
+            Chinese_80Below += 1
+
+        if(student.list_scores[1] > 90):
+            Math_90Above += 1
+        elif(student.list_scores[1] > 80):
+            Math_80Above += 1
+        elif(student.list_scores[1] < 80):
+            Math_80Below += 1
+
+        if(student.list_scores[2] > 90):
+            English_90Above += 1
+        elif(student.list_scores[2] > 80):
+            English_80Above += 1
+        elif(student.list_scores[2] < 80):
+            English_80Below += 1
+
+    print(Chinese_90Above)
+    print(Chinese_80Above)
+    print(Chinese_80Below)
+
+    print(Math_90Above)
+    print(Math_80Above)
+    print(Math_80Below)
+
+    print(English_90Above)
+    print(English_80Above)
+    print(English_80Below)

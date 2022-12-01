@@ -2,6 +2,7 @@ from Student_load import load
 from Student_class import Student
 # from Student_record import record
 from model.Student_Search import *
+import pandas as pd
 
 """
                    File Function Description
@@ -12,7 +13,6 @@ change score          -change a specific student's specific score
 insert                -insert a student's information
 part_operate          -use in a terminal
 """
-
 
 
 def scores_divided(students):
@@ -30,7 +30,7 @@ def scores_divided(students):
 
 
 def sort(students):
-    def bubble(students, list):  #bubble sort
+    def bubble(students, list):  # bubble sort
         choose_1 = 0
         try:
             choose_1 = int(input('up（1） down（2）：'))
@@ -144,17 +144,24 @@ def insert(students):
     new_student = Student(name, id, Chinese, Math, English)
     students.append(new_student)
 
-def printStudentInfo(students):
+
+def print_student_info(students):
     for student in students:
         print(f"Student Name: {student.name}")
         print(f"Student ID:   {student.id}")
-        print(f"Chinese: {student.list_scores[0]},   Math: {student.list_scores[1]},   English: {student.list_scores[2]}")
-        print(f"Grades:  {student.list_grades[0]}             {student.list_grades[1]}                {student.list_grades[2]}")
+        print(
+            f"Chinese: {student.list_scores[0]},   Math: {student.list_scores[1]},   English: {student.list_scores[2]}")
+        print(
+            f"Grades:  {student.list_grades[0]}             {student.list_grades[1]}                {student.list_grades[2]}")
         print("---------------------------------------------")
 
 
-
-
+def sort_practice():
+    data = pd.read_excel(r"D:\CodeHouse\PycharmProjects\5002FinalProject\model\Student_Scores.xlsx",
+                         converters={'Name': str, 'ID': int, 'Chinese': float, 'Math': float, 'English': float})
+    data.sort_values(by='Chinese', inplace=True, ascending=False)
+    with pd.ExcelWriter('Student_Scores.xlsx') as writer:
+        data.to_excel(writer, sheet_name='Sheet_name_1')
 
 
 def part_operate(students):
@@ -170,6 +177,7 @@ def part_operate(students):
                  Show Average Scores..........7
                  Show Variance................8
                  Show Median..................9
+                 Show District...............10
 
          """)
         choose = 0
@@ -194,7 +202,7 @@ def part_operate(students):
             insert(students)
             print('add successfully')
         elif choose == 5:
-            printStudentInfo(students)
+            print_student_info(students)
         elif choose == 6:
             record('operate', choose)
             return
@@ -204,7 +212,9 @@ def part_operate(students):
             show_variance(students)
         elif choose == 9:
             show_median(students)
+        elif choose == 10:
+            show_scores_district(students)
+        elif choose == 11:
+            sort_practice()
         else:
             print('invalid input,please try again！')
-
-
