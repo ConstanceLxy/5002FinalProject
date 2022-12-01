@@ -165,8 +165,11 @@ def part_operate(students):
                  Change.......................2
                  Sort.........................3
                  Insert.......................4
-                 Print Information............5
+                 Print All Information........5
                  Exit.........................6
+                 Show Average Scores..........7
+                 Show Variance................8
+                 Show Median..................9
 
          """)
         choose = 0
@@ -186,7 +189,6 @@ def part_operate(students):
             record('operate', choose)
             sort(students)
             print('sorted successfully')
-
         elif choose == 4:
             record('operate', choose)
             insert(students)
@@ -196,6 +198,12 @@ def part_operate(students):
         elif choose == 6:
             record('operate', choose)
             return
+        elif choose == 7:
+            show_average(students, len(students))
+        elif choose == 8:
+            show_variance(students)
+        elif choose == 9:
+            show_median(students)
         else:
             print('invalid input,please try again！')
 

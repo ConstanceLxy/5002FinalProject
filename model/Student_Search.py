@@ -48,7 +48,8 @@ def show_average(students,num):
     ave.append(average(list_Chinese,num))
     ave.append(average(list_Math,num))
     ave.append(average(list_English,num))
-    print(f"Chinese：{ave[0]:.2f},Math：{ave[1]:.2f},English：{ave[2]:.2f}")
+    print("Average Scores")
+    print(f"Chinese：{ave[0]:.2f}  Math：{ave[1]:.2f}  English：{ave[2]:.2f}")
 
 def show_rank(students):
     list_Chinese = []
@@ -90,7 +91,7 @@ def show_variance(students):
         name.append(student.name)
         variance.append(student.Variance())
     dict_0 = dict(zip(name,variance)) #make 2 lists into a dic with zip
-    dict_1 = sorted(dict_0.items(),key = lambda x:x[1],reverse = True)
+    dict_1 = sorted(dict_0.items(),key = lambda x:x[1])
     for i in dict_1:
         print(i)
 def show_highest(students):
@@ -150,6 +151,23 @@ def show_grade(students):
     List_Math = count(List_Math,Math)
     List_English = count(List_English,English)
 
-
-
+def show_median(students):
+    Median_Chinese = 0
+    Median_Math = 0
+    Median_English = 0
+    Scores_Chinese = []
+    Scores_Math = []
+    Scores_English = []
+    for student in students:
+        if student.list_scores[0] == -1 or student.list_scores[1] == -1 or student.list_scores[2] == -1:
+            continue
+        Scores_Chinese.append(student.list_scores[0])
+        Scores_Math.append(student.list_scores[1])
+        Scores_English.append(student.list_scores[2])
+        Scores_Chinese.sort()
+        Scores_Chinese.sort()
+        Scores_Chinese.sort()
+    print(Scores_Chinese[int((len(Scores_Chinese)-1)/2)])
+    print(Scores_Math[int((len(Scores_Math)-1)/2)])
+    print(Scores_English[int((len(Scores_English)-1)/2)])
 
