@@ -241,6 +241,7 @@ def part_operate(students):
             pie_district_chinese(students)
             pie_district_english(students)
             pie_district_math(students)
+            report_generate()
 
 
         else:
