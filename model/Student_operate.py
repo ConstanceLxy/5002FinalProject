@@ -4,6 +4,7 @@ from Student_class import Student
 from model.Student_Search import *
 import pandas as pd
 from openpyxl import load_workbook
+from model.Student_draw import *
 
 """
                    File Function Description
@@ -188,9 +189,9 @@ def part_operate(students):
         print("""
                        
                  Initialize...................1
-                 Change.......................2（需要更新
-                 Sort.........................3（需要更新
-                 Insert.......................4（需要更新
+                 Change.......................2
+                 Sort.........................3
+                 Insert.......................4
                  Print All Information........5
                  Exit.........................6
                  Show Average Scores..........7
@@ -237,6 +238,10 @@ def part_operate(students):
         elif choose == 9:
             show_median(students)
         elif choose == 10:
-            show_scores_district(students)
+            pie_district_chinese(students)
+            pie_district_english(students)
+            pie_district_math(students)
+
+
         else:
             print('invalid input,please try again！')

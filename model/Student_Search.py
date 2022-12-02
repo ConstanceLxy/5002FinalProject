@@ -206,14 +206,10 @@ def show_scores_district(students):
         elif(student.list_scores[2] < 80):
             English_80Below += 1
 
-    print(Chinese_90Above)
-    print(Chinese_80Above)
-    print(Chinese_80Below)
+    chinese_district = [Chinese_90Above,Chinese_80Above,Chinese_80Below]
+    math_district = [Math_90Above,Math_80Above,Math_80Below]
+    english_district = [English_90Above,English_80Above,English_80Below]
 
-    print(Math_90Above)
-    print(Math_80Above)
-    print(Math_80Below)
+    district = [chinese_district,math_district,english_district]
 
-    print(English_90Above)
-    print(English_80Above)
-    print(English_80Below)
+    return district
