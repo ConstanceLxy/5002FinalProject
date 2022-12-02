@@ -158,18 +158,30 @@ def print_student_info(students):
 
 
 def sort_practice():
-    data = pd.read_excel(r"D:\CodeHouse\PycharmProjects\5002FinalProject\model\Student_Scores.xlsx",
+    data = pd.read_excel(r"D:\CodeHouse\PycharmProjects\5002FinalProject\model\Scores_Original.xlsx",
                          converters={'Name': str, 'ID': int, 'Chinese': float, 'Math': float, 'English': float})
     data.sort_values(by='Chinese', inplace=True, ascending=False)
     data = data[data.columns.drop(list(data.filter(regex='Unnamed')))]
-    with pd.ExcelWriter('Scores_Sorted.xlsx') as writer:
+    with pd.ExcelWriter('Student_Scores_Sorted.xlsx') as writer:
         data.to_excel(writer, sheet_name='Sheet_name_1')
 
-    wb = load_workbook(filename='Scores_Sorted.xlsx',read_only=False)
+    wb = load_workbook(filename='Student_Scores_Sorted.xlsx', read_only=False)
     Sheet = wb['Sheet_name_1']
     Sheet.delete_cols(1)
-    wb.save('Scores_Sorted.xlsx')
+    wb.save('Student_Scores_Sorted.xlsx')
 
+def xlsx_update(students):
+    wb = load_workbook(filename='Scores_Original.xlsx', read_only=False)
+    Sheet = wb['Sheet1']
+    count = 0
+    for row in range(2, Sheet.max_row+1):
+        Sheet.cell(row,1).value = students[count].name
+        Sheet.cell(row,2).value = students[count].id
+        Sheet.cell(row,3).value = students[count].list_scores[0]
+        Sheet.cell(row,4).value = students[count].list_scores[1]
+        Sheet.cell(row,5).value = students[count].list_scores[2]
+        count = count+1
+    wb.save('Scores_Original.xlsx')
 
 def part_operate(students):
     while True:
@@ -199,20 +211,25 @@ def part_operate(students):
         elif choose == 2:
             record('operate', choose)
             change_score(students)
+            xlsx_update(students)
             print('update successfully！')
         elif choose == 3:
             record('operate', choose)
             sort(students)
+            xlsx_update(students)
             print('sorted successfully')
         elif choose == 4:
             record('operate', choose)
             insert(students)
+            xlsx_update(students)
             print('add successfully')
         elif choose == 5:
             print_student_info(students)
         elif choose == 6:
             record('operate', choose)
             return
+
+        # visible
         elif choose == 7:
             show_average(students, len(students))
         elif choose == 8:
@@ -221,7 +238,5 @@ def part_operate(students):
             show_median(students)
         elif choose == 10:
             show_scores_district(students)
-        elif choose == 11:
-            sort_practice()
         else:
             print('invalid input,please try again！')

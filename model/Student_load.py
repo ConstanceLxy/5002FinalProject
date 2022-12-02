@@ -3,7 +3,7 @@ from model.Student_class import Student
 
 
 def load():
-    data = pd.read_excel(r"D:\CodeHouse\PycharmProjects\5002FinalProject\model\Student_Scores.xlsx",
+    data = pd.read_excel(r"D:\CodeHouse\PycharmProjects\5002FinalProject\model\Scores_Original.xlsx",
                            converters={'Name': str, 'ID': int, 'Chinese': float, 'Math': float, 'English': float})
     # array to data array
     data_array = data.values
