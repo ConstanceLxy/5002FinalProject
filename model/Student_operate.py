@@ -3,6 +3,7 @@ from Student_class import Student
 # from Student_record import record
 from model.Student_Search import *
 import pandas as pd
+from openpyxl import load_workbook
 
 """
                    File Function Description
@@ -160,8 +161,14 @@ def sort_practice():
     data = pd.read_excel(r"D:\CodeHouse\PycharmProjects\5002FinalProject\model\Student_Scores.xlsx",
                          converters={'Name': str, 'ID': int, 'Chinese': float, 'Math': float, 'English': float})
     data.sort_values(by='Chinese', inplace=True, ascending=False)
-    with pd.ExcelWriter('Student_Scores.xlsx') as writer:
+    data = data[data.columns.drop(list(data.filter(regex='Unnamed')))]
+    with pd.ExcelWriter('Scores_Sorted.xlsx') as writer:
         data.to_excel(writer, sheet_name='Sheet_name_1')
+
+    wb = load_workbook(filename='Scores_Sorted.xlsx',read_only=False)
+    Sheet = wb['Sheet_name_1']
+    Sheet.delete_cols(1)
+    wb.save('Scores_Sorted.xlsx')
 
 
 def part_operate(students):
@@ -169,9 +176,9 @@ def part_operate(students):
         print("""
                        
                  Initialize...................1
-                 Change.......................2
-                 Sort.........................3
-                 Insert.......................4
+                 Change.......................2（需要更新
+                 Sort.........................3（需要更新
+                 Insert.......................4（需要更新
                  Print All Information........5
                  Exit.........................6
                  Show Average Scores..........7
