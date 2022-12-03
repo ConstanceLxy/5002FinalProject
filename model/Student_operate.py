@@ -193,11 +193,8 @@ def part_operate(students):
                  Sort.........................3
                  Insert.......................4
                  Print All Information........5
-                 Exit.........................6
-                 Show Average Scores..........7
-                 Show Variance................8
-                 Show Median..................9
-                 Show District...............10
+                 Generate Report..............6
+                 Exit.........................7
 
          """)
         choose = 0
@@ -227,18 +224,11 @@ def part_operate(students):
         elif choose == 5:
             print_student_info(students)
         elif choose == 6:
+            report_generate(students)
+        elif choose == 7:
             record('operate', choose)
             return
 
-        # visible
-        elif choose == 7:
-            show_average(students, len(students))
-        elif choose == 8:
-            show_variance(students)
-        elif choose == 9:
-            show_median(students)
-        elif choose == 10:
-            report_generate(students)
 
 
         else:
