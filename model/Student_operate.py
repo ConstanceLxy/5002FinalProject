@@ -238,10 +238,7 @@ def part_operate(students):
         elif choose == 9:
             show_median(students)
         elif choose == 10:
-            pie_district_chinese(students)
-            pie_district_english(students)
-            pie_district_math(students)
-            report_generate()
+            report_generate(students)
 
 
         else:

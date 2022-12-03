@@ -45,11 +45,10 @@ def show_average(students,num):
         list_English.append(student.list_scores[2])
 
     ave = [] #save every subject's average
-    ave.append(average(list_Chinese,num))
-    ave.append(average(list_Math,num))
-    ave.append(average(list_English,num))
-    print("Average Scores")
-    print(f"Chinese：{ave[0]:.2f}  Math：{ave[1]:.2f}  English：{ave[2]:.2f}")
+    ave.append(int(average(list_Chinese,num)))
+    ave.append(int(average(list_Math,num)))
+    ave.append(int(average(list_English,num)))
+    return ave
 
 def show_rank(students):
     list_Chinese = []
@@ -152,9 +151,6 @@ def show_grade(students):
     List_English = count(List_English,English)
 
 def show_median(students):
-    Median_Chinese = 0
-    Median_Math = 0
-    Median_English = 0
     Scores_Chinese = []
     Scores_Math = []
     Scores_English = []
@@ -167,10 +163,9 @@ def show_median(students):
         Scores_Chinese.sort()
         Scores_Chinese.sort()
         Scores_Chinese.sort()
-    print(Scores_Chinese[int((len(Scores_Chinese)-1)/2)])
-    print(Scores_Math[int((len(Scores_Math)-1)/2)])
-    print(Scores_English[int((len(Scores_English)-1)/2)])
 
+    median = [Scores_Chinese[int((len(Scores_Chinese)-1)/2)], Scores_Math[int((len(Scores_Math)-1)/2)], Scores_English[int((len(Scores_English)-1)/2)]]
+    return median
 def show_scores_district(students):
     Chinese_90Above = 0
     Chinese_80Above = 0
