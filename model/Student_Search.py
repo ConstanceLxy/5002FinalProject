@@ -48,6 +48,10 @@ def show_average(students,num):
     ave.append(int(average(list_Chinese,num)))
     ave.append(int(average(list_Math,num)))
     ave.append(int(average(list_English,num)))
+    print('Average Scores: ')
+    print('Chinese: ' + str(ave[0]))
+    print('English: ' + str(ave[1]))
+    print('Math:    ' + str(ave[2]))
     return ave
 
 def show_rank(students):
@@ -66,7 +70,7 @@ def show_rank(students):
     list_English.sort(reverse=True)
     list_sum.sort(reverse=True)
     rank = []
-    name = input('please input name or id')
+    name = input('please input name or id: ')
     flag = 0
     for student in students:
         if student.name == name or str(student.id) == name:
@@ -149,6 +153,18 @@ def show_grade(students):
     List_Chinese = count(List_Chinese,Chinese)
     List_Math = count(List_Math,Math)
     List_English = count(List_English,English)
+    print("Number of people for Chinese Grade: ")
+    print('A: ' + str(List_Chinese[0]) + ' B: ' + str(List_Chinese[1]) + ' C: ' + str(List_Chinese[2]) + ' D: ' + str(List_Chinese[3]) +
+          ' F: ' + str(List_Chinese[4]))
+    print("------------------------------------------")
+    print("Number of people for Math Grade: ")
+    print('A: ' + str(List_Math[0]) + ' B: ' + str(List_Math[1]) + ' C: ' + str(List_Math[2]) + ' D: ' + str(List_Math[3]) +
+          ' F: ' + str(List_Chinese[4]))
+    print("------------------------------------------")
+    print("Number of people for English Grade: ")
+    print('A: ' + str(List_English[0]) + ' B: ' + str(List_English[1]) + ' C: ' + str(List_English[2]) + ' D: ' + str(List_English[3]) +
+          ' F: ' + str(List_English[4]))
+    print("------------------------------------------")
 
 def show_median(students):
     Scores_Chinese = []
@@ -208,3 +224,59 @@ def show_scores_district(students):
     district = [chinese_district,math_district,english_district]
 
     return district
+
+def show_all(students):
+    print('Name  ID  Chinese  Math  English  Total')
+    for student in students:
+        if len(student.name) == 2:
+            print(student.name,' ',student.id,student.list_scores[0],student.list_scores[1],student.list_scores[2]*1.0,student.sum())
+        else:
+            print(student.name,student.id,student.list_scores[0],student.list_scores[1],student.list_scores[2]*1.0,student.sum())
+
+
+def part_search(students):
+    while True:
+        print("""
+                     Search   
+                 show_scores.............1
+                 show_average............2
+                 show_rank...............3
+                 show_variance...........4
+                 show_highest............5
+                 show_grade_distribute...6
+                 show_all................7
+                 exit....................8
+         """)
+        num = len(students)
+        choose = 0
+        try:
+            choose = int(input('Please input 1-8：'))
+        except:
+            print('')
+        if choose == 1:
+            record('search', choose)
+            show_scores(students)
+        elif choose == 2:
+            record('search', choose)
+            show_average(students, num)
+        elif choose == 3:
+            record('search', choose)
+            show_rank(students)
+        elif choose == 4:
+            record('search', choose)
+            show_variance(students)
+        elif choose == 5:
+            record('search', choose)
+            show_highest(students)
+        elif choose == 6:
+            record('search', choose)
+            show_grade(students)
+        elif choose == 7:
+            record('search', choose)
+            show_all(students)
+        elif choose == 8:
+            record('search', choose)
+            return
+        else:
+            print('Wrong input，please try again')
+

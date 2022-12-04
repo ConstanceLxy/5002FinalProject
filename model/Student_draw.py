@@ -85,8 +85,3 @@ def report_generate(students):
     document.add_page_break()
     document.save('Report_Generated.docx')
 
-# def curve_distribute_chinese():
-
-# def curve_distribute_math():
-#
-# def curve_distribute_english():

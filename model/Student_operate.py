@@ -193,8 +193,7 @@ def part_operate(students):
                  Sort.........................3
                  Insert.......................4
                  Print All Information........5
-                 Generate Report..............6
-                 Exit.........................7
+                 Exit.........................6
 
          """)
         choose = 0
@@ -222,10 +221,9 @@ def part_operate(students):
             xlsx_update(students)
             print('add successfully')
         elif choose == 5:
+            record('operate', choose)
             print_student_info(students)
         elif choose == 6:
-            report_generate(students)
-        elif choose == 7:
             record('operate', choose)
             return
 
