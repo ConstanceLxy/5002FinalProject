@@ -1,0 +1,4 @@
+time:2022-12-0502:43:59  part:Show Average  
+time:2022-12-0502:44:00  part:Show Highest  
+time:2022-12-0502:44:01  part:Show All  
+time:2022-12-0502:44:02  part:Show Variance  

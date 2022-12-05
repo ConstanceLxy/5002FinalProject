@@ -106,9 +106,6 @@ while True:
     if event == 'Exit':
         print('close')
         exit(0)
-    if event == '请输入一些内容':
-        print(values[2])
-
 
 
 window.close()
