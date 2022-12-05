@@ -31,11 +31,12 @@ def scores_divided(students):
     return list
 
 
-def sort(students):
+def sort(students, choose00, subjectChoose):
+    choose0 = choose00
     def bubble(students, list):  # bubble sort
         choose_1 = 0
         try:
-            choose_1 = int(input('up（1） down（2）：'))
+            choose_1 = int(choose0)
         except:
             print('')
         if choose_1 == 1:
@@ -56,7 +57,7 @@ def sort(students):
     def selection(students, list):  # choose sort
         choose_1 = 0
         try:
-            choose_1 = int(input('up（1） down（2）：'))
+            choose_1 = int(choose0)
         except:
             print('')
         if choose_1 == 1:
@@ -82,7 +83,7 @@ def sort(students):
 
     choose = 0
     try:
-        choose = int(input('sort by:Chinese（1） Math（2） English（3） Total（4）：'))
+        choose = int(subjectChoose)
     except:
         print('')
     if choose == 1:
@@ -101,30 +102,25 @@ def sort(students):
         print('invalid input')
 
 
-def change_score(students):
-    name = input('Please input name or id：')
+def change_score(students, nameId, subject, newScore):
     for student in students:
-        if student.name == name or str(student.id) == name:
-            subject = 0
-            try:
-                subject = int(input('You want to change：Chinese（1）Math（2）English（3）：'))
-            except:
-                print("")
-            if subject == 1:
+        if student.name == nameId or str(student.id) == nameId:
+            subject_ = int(subject)
+            if subject_ == 1:
                 try:
-                    new_score = int(input('please input new score：'))
+                    new_score = int(newScore)
                     student.list_scores[0] = new_score
                 except:
                     print('invalid input')
-            elif subject == 2:
+            elif subject_ == 2:
                 try:
-                    new_score = int(input('please input new score：'))
+                    new_score = int(newScore)
                     student.list_scores[1] = new_score
                 except:
                     print('invalid input')
-            elif subject == 3:
+            elif subject_ == 3:
                 try:
-                    new_score = int(input('please input new score：'))
+                    new_score = int(newScore)
                     student.list_scores[2] = new_score
                 except:
                     print('invalid input')
@@ -132,14 +128,14 @@ def change_score(students):
                 print('invalid input')
 
 
-def insert(students):
-    name = input('name：')
+def insert(students, newName, newId, newChinese, newMath, newEnglish):
+    name = newName
     while True:
         try:
-            id = int(input('id：'))
-            Chinese = float(input('Chinese：'))
-            Math = float(input('Math：'))
-            English = float(input('English：'))
+            id = int(newId)
+            Chinese = float(newChinese)
+            Math = float(newMath)
+            English = float(newEnglish)
             break
         except:
             print('invalid input,please try again！')
@@ -202,29 +198,29 @@ def part_operate(students):
         except:
             print('')
         if choose == 1:
-            record('operate', choose)
+            record('operate')
             students = load()
             print('initialize successfully！')
         elif choose == 2:
-            record('operate', choose)
+            record('operate')
             change_score(students)
             xlsx_update(students)
             print('update successfully！')
         elif choose == 3:
-            record('operate', choose)
+            record('operate')
             sort(students)
             xlsx_update(students)
             print('sorted successfully')
         elif choose == 4:
-            record('operate', choose)
+            record('operate')
             insert(students)
             xlsx_update(students)
             print('add successfully')
         elif choose == 5:
-            record('operate', choose)
+            record('operate')
             print_student_info(students)
         elif choose == 6:
-            record('operate', choose)
+            record('operate')
             return
 
 

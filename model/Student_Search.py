@@ -15,11 +15,10 @@ show_grade(students)        -print the number of people in each grade for the th
 
 """
 
-def show_scores(students):
-    name = input('please input name or id:')
+def show_scores(students,ID):
     flag = 0
     for student in students:
-        if student.name ==name or str(student.id) == name:
+        if student.name == ID or str(student.id) == ID:
             print(f"Chinese :{student.list_scores[0]:.2f},math:{student.list_scores[1]:.2f},English:{student.list_scores[2]:.2f},Total:{student.sum():.2f}")
             flag = 1
             break
@@ -54,7 +53,7 @@ def show_average(students,num):
     print('Math:    ' + str(ave[2]))
     return ave
 
-def show_rank(students):
+def show_rank(students, NameId):
     list_Chinese = []
     list_Math = []
     list_English = []
@@ -70,10 +69,9 @@ def show_rank(students):
     list_English.sort(reverse=True)
     list_sum.sort(reverse=True)
     rank = []
-    name = input('please input name or id: ')
     flag = 0
     for student in students:
-        if student.name == name or str(student.id) == name:
+        if student.name == NameId or str(student.id) == NameId:
             rank.append(list_Chinese.index(student.list_scores[0]))
             rank.append(list_Math.index(student.list_scores[1]))
             rank.append(list_English.index(student.list_scores[2]))
@@ -115,11 +113,11 @@ def show_highest(students):
     print('-------------------------------------------------------------')
     for student in students:
         if student.list_scores[1] == list_Math[0]:
-            print(f"{student.name}get highest{list_Math[0]:.2f}分 in math")
+            print(f"{student.name}get highest{list_Math[0]:.2f} in math")
     print('-------------------------------------------------------------')
     for student in students:
         if student.list_scores[2] == list_English[0]:
-            print(f"{student.name}get highest{list_English[0]:.2f}分 in English")
+            print(f"{student.name}get highest{list_English[0]:.2f} in English")
     print('-------------------------------------------------------------')
 
 def grades_divided(students):

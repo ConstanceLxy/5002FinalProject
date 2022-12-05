@@ -1,6 +1,0 @@
-time:2022-12-0322:03:35  part:system  action:3 
-time:2022-12-0322:04:50  part:system  action:2 
-time:2022-12-0322:04:53  part:operate  action:5 
-time:2022-12-0322:05:01  part:operate  action:6 
-time:2022-12-0322:05:13  part:system  action:1 
-time:2022-12-0322:05:19  part:search  action:8 
