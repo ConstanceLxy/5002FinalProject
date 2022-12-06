@@ -4,7 +4,7 @@ from docx import Document
 from docx.shared import Inches
 
 
-# draw a pie chart for chinese scores distribution
+# Draw a pie chart for chinese scores distribution
 def pie_district_chinese(students):
     labels = ['scores > 90', '80 < scores < 90', 'scores < 80']
     values = [show_scores_district(students)[0][0], show_scores_district(students)[0][1],
@@ -15,7 +15,7 @@ def pie_district_chinese(students):
     plt.show()
 
 
-# draw a pie chart for math scores distribution
+# Draw a pie chart for math scores distribution
 def pie_district_math(students):
     labels = ['scores > 90', '80 < scores < 90', 'scores < 80']
     values = [show_scores_district(students)[1][0], show_scores_district(students)[1][1],
@@ -26,7 +26,7 @@ def pie_district_math(students):
     plt.show()
 
 
-# draw a pie chart for english scores distribution
+# Draw a pie chart for english scores distribution
 def pie_district_english(students):
     labels = ['scores > 90', '80 < scores < 90', 'scores < 80']
     values = [show_scores_district(students)[2][0], show_scores_district(students)[2][1],
