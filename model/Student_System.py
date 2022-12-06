@@ -1,14 +1,11 @@
-from Student_load import load
-from Student_Search import *
 from Student_operate import *
-from Student_save import part_save
-from Student_record import record
+from Student_save import *
 from Student_log_in import *
-from model.Student_draw import report_generate
-
 import PySimpleGUI as sg
+from model.Student_draw import *
+from model.Student_load import load
 
-students = load()  # load
+students = load()
 f = open('record.txt', 'w')
 f.close()
 
@@ -32,7 +29,7 @@ layoutButtom = [
 ]
 
 layout = [
-    [sg.T(' Choose the File'), sg.In(), sg.FolderBrowse()],
+    [sg.T(' Choose the File'), sg.In(), sg.FileBrowse()],
     [sg.T(' Select The Function you want')],
     [sg.Col(layoutL), sg.Col(layoutR)],
     [sg.Col(layoutButtom)],
@@ -47,7 +44,7 @@ while True:
     if event == None:
         break
     if event == 'Show Scores  ':
-        NameId = sg.PopupGetText('please enter the student you want to find')
+        NameId = sg.PopupGetText('please enter the student ID you want to find')
         show_scores(students, NameId)
         record('Show Scores')
         print('------------------------------------------------------------------------------------------------')
@@ -56,7 +53,7 @@ while True:
         record('Show Average')
         print('------------------------------------------------------------------------------------------------')
     if event == 'Show Rank':
-        NameId = sg.PopupGetText('please enter the student you want to find')
+        NameId = sg.PopupGetText('please enter the student ID you want to find')
         show_rank(students, NameId)
         record('Show Rank')
         print('------------------------------------------------------------------------------------------------')
@@ -72,7 +69,7 @@ while True:
         print_student_info(students)
 
     if event == 'Change':
-        NameId = sg.PopupGetText('please enter the student you want to find')
+        NameId = sg.PopupGetText('please enter the student ID you want to find')
         Subject = sg.PopupGetText('please enter the subject you want to change'
                                   '<Chinese:1>  <Math:2>  <English:3>')
         Score = sg.PopupGetText('please enter the new score')
@@ -106,7 +103,6 @@ while True:
     if event == 'Exit':
         print('close')
         exit(0)
-
 
 window.close()
 

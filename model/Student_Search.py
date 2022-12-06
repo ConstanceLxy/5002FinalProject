@@ -1,7 +1,3 @@
-from Student_record import record
-import matplotlib.pyplot as plt
-
-
 """
                  Function Description
 show_scores(students)       -print specific student's score
@@ -194,25 +190,25 @@ def show_scores_district(students):
     English_80Below = 0
 
     for student in students:
-        if(student.list_scores[0] > 90):
+        if student.list_scores[0] > 90:
             Chinese_90Above += 1
-        elif(student.list_scores[0] > 80):
+        elif student.list_scores[0] > 80:
             Chinese_80Above += 1
-        elif(student.list_scores[0] < 80):
+        elif student.list_scores[0] < 80:
             Chinese_80Below += 1
 
-        if(student.list_scores[1] > 90):
+        if student.list_scores[1] > 90:
             Math_90Above += 1
-        elif(student.list_scores[1] > 80):
+        elif student.list_scores[1] > 80:
             Math_80Above += 1
-        elif(student.list_scores[1] < 80):
+        elif student.list_scores[1] < 80:
             Math_80Below += 1
 
-        if(student.list_scores[2] > 90):
+        if student.list_scores[2] > 90:
             English_90Above += 1
-        elif(student.list_scores[2] > 80):
+        elif student.list_scores[2] > 80:
             English_80Above += 1
-        elif(student.list_scores[2] < 80):
+        elif student.list_scores[2] < 80:
             English_80Below += 1
 
     chinese_district = [Chinese_90Above,Chinese_80Above,Chinese_80Below]
@@ -222,59 +218,4 @@ def show_scores_district(students):
     district = [chinese_district,math_district,english_district]
 
     return district
-
-def show_all(students):
-    print('Name  ID  Chinese  Math  English  Total')
-    for student in students:
-        if len(student.name) == 2:
-            print(student.name,' ',student.id,student.list_scores[0],student.list_scores[1],student.list_scores[2]*1.0,student.sum())
-        else:
-            print(student.name,student.id,student.list_scores[0],student.list_scores[1],student.list_scores[2]*1.0,student.sum())
-
-
-def part_search(students):
-    while True:
-        print("""
-                     Search   
-                 show_scores.............1
-                 show_average............2
-                 show_rank...............3
-                 show_variance...........4
-                 show_highest............5
-                 show_grade_distribute...6
-                 show_all................7
-                 exit....................8
-         """)
-        num = len(students)
-        choose = 0
-        try:
-            choose = int(input('Please input 1-8：'))
-        except:
-            print('')
-        if choose == 1:
-            record('search', choose)
-            show_scores(students)
-        elif choose == 2:
-            record('search', choose)
-            show_average(students, num)
-        elif choose == 3:
-            record('search', choose)
-            show_rank(students)
-        elif choose == 4:
-            record('search', choose)
-            show_variance(students)
-        elif choose == 5:
-            record('search', choose)
-            show_highest(students)
-        elif choose == 6:
-            record('search', choose)
-            show_grade(students)
-        elif choose == 7:
-            record('search', choose)
-            show_all(students)
-        elif choose == 8:
-            record('search', choose)
-            return
-        else:
-            print('Wrong input，please try again')
 

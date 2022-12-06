@@ -1,10 +1,5 @@
-from Student_load import load
-from Student_class import Student
-# from Student_record import record
-from model.Student_Search import *
-import pandas as pd
 from openpyxl import load_workbook
-from model.Student_draw import *
+from model.Student_class import Student
 
 """
                    File Function Description
@@ -154,18 +149,6 @@ def print_student_info(students):
         print("---------------------------------------------")
 
 
-def sort_practice():
-    data = pd.read_excel(r"D:\CodeHouse\PycharmProjects\5002FinalProject\model\Scores_Original.xlsx",
-                         converters={'Name': str, 'ID': int, 'Chinese': float, 'Math': float, 'English': float})
-    data.sort_values(by='Chinese', inplace=True, ascending=False)
-    data = data[data.columns.drop(list(data.filter(regex='Unnamed')))]
-    with pd.ExcelWriter('Student_Scores_Sorted.xlsx') as writer:
-        data.to_excel(writer, sheet_name='Sheet_name_1')
-
-    wb = load_workbook(filename='Student_Scores_Sorted.xlsx', read_only=False)
-    Sheet = wb['Sheet_name_1']
-    Sheet.delete_cols(1)
-    wb.save('Student_Scores_Sorted.xlsx')
 
 def xlsx_update(students):
     wb = load_workbook(filename='Scores_Original.xlsx', read_only=False)
@@ -179,51 +162,3 @@ def xlsx_update(students):
         Sheet.cell(row,5).value = students[count].list_scores[2]
         count = count+1
     wb.save('Scores_Original.xlsx')
-
-def part_operate(students):
-    while True:
-        print("""
-                       
-                 Initialize...................1
-                 Change.......................2
-                 Sort.........................3
-                 Insert.......................4
-                 Print All Information........5
-                 Exit.........................6
-
-         """)
-        choose = 0
-        try:
-            choose = int(input('please input 1-5 to begin what you want to do：'))
-        except:
-            print('')
-        if choose == 1:
-            record('operate')
-            students = load()
-            print('initialize successfully！')
-        elif choose == 2:
-            record('operate')
-            change_score(students)
-            xlsx_update(students)
-            print('update successfully！')
-        elif choose == 3:
-            record('operate')
-            sort(students)
-            xlsx_update(students)
-            print('sorted successfully')
-        elif choose == 4:
-            record('operate')
-            insert(students)
-            xlsx_update(students)
-            print('add successfully')
-        elif choose == 5:
-            record('operate')
-            print_student_info(students)
-        elif choose == 6:
-            record('operate')
-            return
-
-
-
-        else:
-            print('invalid input,please try again！')

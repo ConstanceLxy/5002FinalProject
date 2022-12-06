@@ -1,9 +1,4 @@
-import numpy as np
 import matplotlib.pyplot as plt
-import pandas as pd
-
-from Student_class import Student
-from Student_load import load
 from model.Student_Search import *
 from docx import Document
 from docx.shared import Inches
