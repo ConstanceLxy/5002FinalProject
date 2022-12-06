@@ -4,6 +4,7 @@ from docx import Document
 from docx.shared import Inches
 
 
+# draw a pie chart for chinese scores distribution
 def pie_district_chinese(students):
     labels = ['scores > 90', '80 < scores < 90', 'scores < 80']
     values = [show_scores_district(students)[0][0], show_scores_district(students)[0][1],
@@ -14,6 +15,7 @@ def pie_district_chinese(students):
     plt.show()
 
 
+# draw a pie chart for math scores distribution
 def pie_district_math(students):
     labels = ['scores > 90', '80 < scores < 90', 'scores < 80']
     values = [show_scores_district(students)[1][0], show_scores_district(students)[1][1],
@@ -24,6 +26,7 @@ def pie_district_math(students):
     plt.show()
 
 
+# draw a pie chart for english scores distribution
 def pie_district_english(students):
     labels = ['scores > 90', '80 < scores < 90', 'scores < 80']
     values = [show_scores_district(students)[2][0], show_scores_district(students)[2][1],
@@ -34,6 +37,7 @@ def pie_district_english(students):
     plt.show()
 
 
+# generate a report for print use
 def report_generate(students):
     pie_district_chinese(students)
     pie_district_math(students)
@@ -46,7 +50,8 @@ def report_generate(students):
     document.add_heading('Scores Rank', 1)
     scores = [['Name', 'Id', 'Chinese', 'Math', 'English']]
     for student in students:
-        scores.append([student.name, str(student.id), str(student.list_scores[0]), str(student.list_scores[1]), str(student.list_scores[2])])
+        scores.append([student.name, str(student.id), str(student.list_scores[0]), str(student.list_scores[1]),
+                       str(student.list_scores[2])])
     row = len(scores)
     col = len(scores[0])
     table = document.add_table(rows=row, cols=col)
@@ -79,4 +84,3 @@ def report_generate(students):
     # save file
     document.add_page_break()
     document.save('Report_Generated.docx')
-

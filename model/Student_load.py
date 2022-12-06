@@ -1,7 +1,7 @@
 import pandas as pd
 from model.Student_class import Student
 
-
+# load the Excel data into the list
 def load():
     data = pd.read_excel(r"D:\CodeHouse\PycharmProjects\5002FinalProject\model\Scores_Original.xlsx",
                          converters={'Name': str, 'ID': int, 'Chinese': float, 'Math': float, 'English': float})

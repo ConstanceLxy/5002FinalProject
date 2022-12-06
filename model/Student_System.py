@@ -5,14 +5,19 @@ import PySimpleGUI as sg
 from model.Student_draw import *
 from model.Student_load import load
 
+# Load the application with Excel data
 students = load()
+
+# Clear the txt file after last time use
 f = open('record.txt', 'w')
 f.close()
 
+# Layouts and window create for UI interface
 layoutL = [
     [sg.T('SEARCH')],
     [sg.B('Show Scores  '), sg.B('Show Average'), sg.B('Show Rank')],
-    [sg.B('Show Variance'), sg.B('Show Highest'), sg.B('Show All')],
+    [sg.B('Show Variance'), sg.B('Show Highest'), sg.B('Show Grade')],
+    [sg.B('Show All')]
 ]
 layoutR = [
     [sg.T('OPERATE')],
@@ -39,6 +44,7 @@ layout = [
 
 window = sg.Window('Student Score Management System', layout, resizable=True)
 
+# Interaction design for user interface
 while True:
     event, values = window.read()
     if event == None:
@@ -67,7 +73,9 @@ while True:
     if event == 'Show All':
         record('Show All')
         print_student_info(students)
-
+    if event == 'Show Grade':
+        record('Show Grade')
+        show_grade(students)
     if event == 'Change':
         NameId = sg.PopupGetText('please enter the student ID you want to find')
         Subject = sg.PopupGetText('please enter the subject you want to change'
@@ -105,4 +113,3 @@ while True:
         exit(0)
 
 window.close()
-

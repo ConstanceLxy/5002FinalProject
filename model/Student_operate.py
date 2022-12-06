@@ -1,17 +1,20 @@
+"""
+                                             File Function Description
+
+scores_divided(students)                                            -return a list with all the students scores and sum [used in sort]
+sort(students, choose00, subjectChoose)                             -sort by subject
+
+change score(students, nameId, subject, newScore)                   -change a specific student's specific score
+insert(students, newName, newId, newChinese, newMath, newEnglish)   -insert a student's information
+print_student_info(students)                                        -print student information
+xlsx_update(students)                                               -update the information for original Excel
+"""
+
 from openpyxl import load_workbook
 from model.Student_class import Student
 
-"""
-                   File Function Description
-scores_divided[used in sort]        -return a list with all the students scores and sum
-sort                  -sort by subject
 
-change score          -change a specific student's specific score
-insert                -insert a student's information
-part_operate          -use in a terminal
-"""
-
-
+# return a list with all the students scores and sum
 def scores_divided(students):
     list_Chinese = []
     list_Math = []
@@ -26,8 +29,10 @@ def scores_divided(students):
     return list
 
 
+# sort by subject
 def sort(students, choose00, subjectChoose):
     choose0 = choose00
+
     def bubble(students, list):  # bubble sort
         choose_1 = 0
         try:
@@ -97,6 +102,7 @@ def sort(students, choose00, subjectChoose):
         print('invalid input')
 
 
+# change a specific student's specific score
 def change_score(students, nameId, subject, newScore):
     for student in students:
         if student.name == nameId or str(student.id) == nameId:
@@ -123,6 +129,7 @@ def change_score(students, nameId, subject, newScore):
                 print('invalid input')
 
 
+# insert a student's information
 def insert(students, newName, newId, newChinese, newMath, newEnglish):
     name = newName
     while True:
@@ -138,6 +145,7 @@ def insert(students, newName, newId, newChinese, newMath, newEnglish):
     students.append(new_student)
 
 
+# print student information
 def print_student_info(students):
     for student in students:
         print(f"Student Name: {student.name}")
@@ -149,16 +157,16 @@ def print_student_info(students):
         print("---------------------------------------------")
 
 
-
+# update the information for original Excel
 def xlsx_update(students):
     wb = load_workbook(filename='Scores_Original.xlsx', read_only=False)
     Sheet = wb['Sheet1']
     count = 0
-    for row in range(2, Sheet.max_row+1):
-        Sheet.cell(row,1).value = students[count].name
-        Sheet.cell(row,2).value = students[count].id
-        Sheet.cell(row,3).value = students[count].list_scores[0]
-        Sheet.cell(row,4).value = students[count].list_scores[1]
-        Sheet.cell(row,5).value = students[count].list_scores[2]
-        count = count+1
+    for row in range(2, Sheet.max_row + 1):
+        Sheet.cell(row, 1).value = students[count].name
+        Sheet.cell(row, 2).value = students[count].id
+        Sheet.cell(row, 3).value = students[count].list_scores[0]
+        Sheet.cell(row, 4).value = students[count].list_scores[1]
+        Sheet.cell(row, 5).value = students[count].list_scores[2]
+        count = count + 1
     wb.save('Scores_Original.xlsx')

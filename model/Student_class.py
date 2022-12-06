@@ -17,7 +17,7 @@ class Student(object):
             sum += score
         return sum
 
-    # class to class(A,B,C,D)
+    # grade by student scores
     def grade(self):
         for score in self.list_scores:
             if score >= 90:
